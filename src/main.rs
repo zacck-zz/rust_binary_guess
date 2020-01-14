@@ -23,7 +23,10 @@ fn main() {
             .expect("Failed to read line");
 
         //convert guess into a real number using shadowing to reuse the previous variable
-        let guess: u32 = guess.trim().parse().expect("Please type a number!");
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
         println!("You guessed: {}", guess);
 
         //compare the guess to secret number
