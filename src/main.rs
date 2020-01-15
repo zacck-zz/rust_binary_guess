@@ -1,42 +1,64 @@
-//import the io library
-use rand::Rng;
-use std::cmp::Ordering;
-use std::io;
-
 // entry point into the program
 fn main() {
-    println!("Guess the number!");
+    //immutability
+    let mut x = 5;
+    println!("X is currently: {}", x);
+    x = 6;
+    println!("X is now: {}", x);
 
-    let secret_number = rand::thread_rng().gen_range(1, 101);
+    //constants
+    const Y: u32 = 67;
 
-    loop {
-        println!("Please input your guess.");
+    println!("Const y is {}", Y);
 
-        //variable to hold the guess
-        //note this is a mutable variable as provided by the mut keyword
-        let mut guess = String::new();
+    //shadowing
+    let s = 66;
 
-        //read input from std in, into the guess variable
-        io::stdin()
-            .read_line(&mut guess)
-            //failure handler with the Result type this line will be called if the above fails
-            .expect("Failed to read line");
+    let s = s + 4;
 
-        //convert guess into a real number using shadowing to reuse the previous variable
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => continue,
-        };
-        println!("You guessed: {}", guess);
+    let s = s * 5;
 
-        //compare the guess to secret number
-        match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big"),
-            Ordering::Equal => {
-                println!("You win!");
-                break;
-            }
-        }
-    }
+    println!("S's value is: {}", s);
+
+    //Integers
+    let decimal_no = 45_556;
+    let hex_no = 0xC0;
+    let octal_no = 0o76;
+    let binary_no = 0b1111_0000;
+    let byte_no = b'C';
+
+    //Floating point numbers
+    let six_four = 2.0;
+
+    let three_two: f32 = 3.0;
+
+    //Numeric operatiion
+
+    //addition
+    let sum = 67 + 90;
+
+    //subtraction
+    let diff = 4556.78 - 4.5;
+
+    //multiplication
+    let product = 78 * 50;
+
+    //divider
+    let quotient = 45.8 / 8.7;
+
+    //remainder
+    let modulus = 23 % 6;
+
+    /*
+     * Booleans
+     */
+    let f = true;
+
+    let t: bool = false; //uses an annotation
+
+    /*
+     * Characters
+     * This type is four bytes in size and represents a unicode scalar
+     */
+    let z = 'z';
 }
