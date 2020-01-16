@@ -100,6 +100,8 @@ fn main() {
     new_function();
     iffy(t);
     iffy(f);
+
+    loopy()
 }
 
 fn new_function() {
@@ -163,4 +165,38 @@ fn iffy(b: bool) {
     let me = if b { "Mee!" } else { "Youuu!" };
 
     println!("{}", me);
+}
+
+fn loopy() {
+    let mut counter = 0;
+
+    // Returning a result from a loop
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+
+    println!("The result is: {}, The counter is {}", result, counter);
+
+    //while loop
+    let mut num = 3;
+    while num != 0 {
+        println!("{}", num);
+
+        num -= 1;
+    }
+
+    println!("ALL SYSTEMS ARE GO");
+
+    // For loop
+    // Perhaps considered a comprehension?
+    let a = [2, 4, 5, 6, 6, 77, 7, 90];
+
+    // Using an iterator
+    for element in a.iter() {
+        println!("the value is: {}", element);
+    }
 }
