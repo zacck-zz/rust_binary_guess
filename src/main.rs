@@ -27,10 +27,16 @@ fn main() {
     let binary_no = 0b1111_0000;
     let byte_no = b'C';
 
+    println!(
+        "Decimal, hex, octal, binary, byte:  {} {} {} {} {}",
+        decimal_no, hex_no, octal_no, binary_no, byte_no
+    );
     //Floating point numbers
-    let six_four = 2.0;
+    let six_four = 2.7;
 
-    let three_two: f32 = 3.0;
+    let three_two: f32 = 3.4;
+
+    println!("Floating point numbers: {} {}", six_four, three_two);
 
     //Numeric operatiion
 
@@ -48,6 +54,11 @@ fn main() {
 
     //remainder
     let modulus = 23 % 6;
+
+    println!(
+        "Sum, difference, quotient, modulus {} {} {} {} {}",
+        sum, diff, product, quotient, modulus
+    );
 
     /*
      * Booleans
