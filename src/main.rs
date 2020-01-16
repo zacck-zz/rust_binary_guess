@@ -67,9 +67,100 @@ fn main() {
 
     let t: bool = false; //uses an annotation
 
+    println!("Bools: {} {}", f, t);
     /*
      * Characters
      * This type is four bytes in size and represents a unicode scalar
      */
     let z = 'z';
+
+    println!("Character: {}", z);
+
+    /*
+     * Compound Types
+     */
+
+    //Tuple
+    let tup: (i32, f64, u8) = (5600, 3.5, 1);
+
+    //pattern match out of a tuple
+    let (p, q, r) = tup;
+
+    println!("Tuple values:  ({}, {}, {})", p, q, r);
+
+    //Arrays
+    //In rust arrays have a fixed length and must contain the same data kinds of item
+    let a: [i32; 5] = [1, 2, 4, 5, 6];
+
+    println!(
+        "Array elements: {} {} {} {} {}",
+        a[0], a[1], a[2], a[3], a[4]
+    );
+
+    new_function();
+    iffy(t);
+    iffy(f);
+}
+
+fn new_function() {
+    println!("Wow from a new function");
+    parametized(32);
+}
+
+fn parametized(x: i32) {
+    println!("The value of x is: {}", x);
+    exprs()
+}
+
+// a function that returns a () [unit] since it ends in a statement an a semicolon
+fn exprs() {
+    //a statement
+    let _x = 5;
+
+    // a statement that contains an expression
+    let y = {
+        let x = three();
+        // an expression notice the lack of a delimiting semicolon
+        plus_one(x)
+    };
+
+    println!("The value of y is: {}", y);
+}
+
+// a function that returns a value
+fn three() -> i32 {
+    3
+}
+
+// A function that takes a paremeter and returns a value
+fn plus_one(x: i32) -> i32 {
+    x + 1
+}
+
+//Control flow code
+fn iffy(b: bool) {
+    // if statement
+    if b {
+        println!("B is true!");
+    } else {
+        println!("B is false!");
+    }
+
+    let number = 6;
+
+    // if with if else
+    if number % 4 == 0 {
+        println!("number is divisible by 4");
+    } else if number % 3 == 0 {
+        println!("number is divisible by 3");
+    } else if number % 2 == 0 {
+        println!("number is divisible by 2");
+    } else {
+        println!("number is not divisible by 4, 3 or 2");
+    }
+
+    // if within let
+    let me = if b { "Mee!" } else { "Youuu!" };
+
+    println!("{}", me);
 }
