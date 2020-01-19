@@ -203,6 +203,11 @@ fn loopy() {
     // Ownership examples
     let s = String::from("Zacck"); // s comes into scope
 
+    // Pass s by reference and avoid transferring ownership
+    let lenny = calc_len(&s);
+
+    println!("The length of {}, is {}", s, lenny);
+
     // With s being a data type that uses drop s moves into ownershipt
     // Meaning that s is no longer valid afer the below statement
     ownership(s);
@@ -223,3 +228,9 @@ fn copies(x: i32) {
     // x comes into scope
     println!("I made a copy of: {}", x);
 } // x goes out of scope but with it being a scalar datatype nothing special happens
+
+// A function that accepts a value by reference and hence doesn't take ownership of the value
+fn calc_len(s: &String) -> usize {
+    s.len()
+} // since calc_len only gets a reference nothing happens here since the function doesn't have ownership
+  // of the value
