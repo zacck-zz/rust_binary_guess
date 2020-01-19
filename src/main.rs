@@ -199,4 +199,27 @@ fn loopy() {
     for element in a.iter() {
         println!("the value is: {}", element);
     }
-}
+
+    // Ownership examples
+    let s = String::from("Zacck"); // s comes into scope
+
+    // With s being a data type that uses drop s moves into ownershipt
+    // Meaning that s is no longer valid afer the below statement
+    ownership(s);
+
+    let x = 5;
+    // With x being a scalar data type that does not use copy when
+    // We pass it along a copy is made on the stack that is inexpensive
+    // Which means using x after the copies call in this function is ok
+    copies(x);
+} // Here x goes out of scope then s too but nothing happens to s since it was moved
+
+fn ownership(stringy: String) {
+    // stringy comes into scope
+    println!("I was given: {}", stringy);
+} // stringy goes out of scope and drop  is called freeing it's allocated memory
+
+fn copies(x: i32) {
+    // x comes into scope
+    println!("I made a copy of: {}", x);
+} // x goes out of scope but with it being a scalar datatype nothing special happens
