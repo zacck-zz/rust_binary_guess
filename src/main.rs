@@ -19,11 +19,22 @@ fn main() {
 
     println!("Updated sign in count: {}", user1.sign_in_count);
 
-    let mut user2 = build_user(String::from("her@her.com"), String::from("dino_c"));
+    let user2 = build_user(String::from("her@her.com"), String::from("dino_c"));
 
     println!("User2 name is: {}", user2.username);
 
-    user2.sign_in_count = 2;
+    //update user2 with new instance
+    let updated_user2 = User {
+        active: false,
+        sign_in_count: { user2.sign_in_count + 1 },
+        // use .. syntax to set variables to the values from the other struct
+        ..user2
+    };
+
+    println!(
+        "Update user2 values active: {}, sign_in_count: {}",
+        updated_user2.active, updated_user2.sign_in_count
+    );
 }
 
 // sample struct for a user type
