@@ -36,8 +36,9 @@ struct User {
 
 fn build_user(email: String, username: String) -> User {
     User {
-        email: email,
-        username: username,
+        // init shorthand when variables and fields have the same name
+        email,
+        username,
         active: true,
         sign_in_count: 1,
     }
