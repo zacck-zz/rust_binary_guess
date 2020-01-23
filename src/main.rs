@@ -35,6 +35,17 @@ fn main() {
         "Update user2 values active: {}, sign_in_count: {}",
         updated_user2.active, updated_user2.sign_in_count
     );
+
+    let black = Col(0, 0, 0);
+
+    println!("Black is R: {}, G: {}, B: {}", black.0, black.1, black.2);
+
+    let origin = Point(0, 0, 0);
+
+    println!(
+        "Origins is point x: {}, y: {}, z: {}",
+        origin.0, origin.1, origin.2
+    );
 }
 
 // sample struct for a user type
@@ -54,3 +65,8 @@ fn build_user(email: String, username: String) -> User {
         sign_in_count: 1,
     }
 }
+
+//tuple structs
+
+struct Col(i32, i32, i32);
+struct Point(i32, i32, i32);
