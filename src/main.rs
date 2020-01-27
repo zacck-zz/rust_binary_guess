@@ -48,6 +48,14 @@ fn main() {
         rect2.can_hold(&rect3)
     );
 
+    let squ = Rectangle::square(height2);
+
+    println!(
+        "The square is of size: {} and area: {}",
+        height2,
+        squ.area()
+    );
+
     //create an instance of a struct
     let mut user1 = User {
         email: String::from("me@me.com"),
@@ -140,11 +148,21 @@ struct Rectangle {
 }
 
 impl Rectangle {
+    // a single variable method using the self type
     fn area(&self) -> u32 {
         self.width * self.height
     }
 
+    // a multivariable struct method
     fn can_hold(&self, rectangle: &Rectangle) -> bool {
         self.width > rectangle.width && self.height > rectangle.height
+    }
+
+    // an associated function commonly used as a constructor
+    fn square(size: u32) -> Rectangle {
+        Rectangle {
+            width: size,
+            height: size,
+        }
     }
 }
