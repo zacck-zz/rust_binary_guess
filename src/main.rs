@@ -1,5 +1,20 @@
 // entry point into the program
 fn main() {
+    let width1 = 78;
+    let height1 = 589;
+
+    println!(
+        "The area of the rectangle is {} squared pixels.",
+        area(width1, height1)
+    );
+
+    let rect1 = (width1, height1);
+
+    println!(
+        "The area when using a tuple is {} squared pixels.",
+        tuple_area(rect1)
+    );
+
     //create an instance of a struct
     let mut user1 = User {
         email: String::from("me@me.com"),
@@ -70,3 +85,13 @@ fn build_user(email: String, username: String) -> User {
 
 struct Col(i32, i32, i32);
 struct Point(i32, i32, i32);
+
+// area calculator
+//
+fn area(width: u32, height: u32) -> u32 {
+    width * height
+}
+
+fn tuple_area(dimensions: (u32, u32)) -> u32 {
+    dimensions.0 * dimensions.1
+}
