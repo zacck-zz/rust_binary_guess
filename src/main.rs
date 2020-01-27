@@ -33,6 +33,21 @@ fn main() {
         rect2.area()
     );
 
+    let width2 = 678;
+    let height2 = 44;
+
+    let rect3 = Rectangle {
+        height: height2,
+        width: width2,
+    };
+
+    println!(
+        "Rectangle {:?} can hold {:?}: {}",
+        rect2,
+        rect3,
+        rect2.can_hold(&rect3)
+    );
+
     //create an instance of a struct
     let mut user1 = User {
         email: String::from("me@me.com"),
@@ -127,5 +142,9 @@ struct Rectangle {
 impl Rectangle {
     fn area(&self) -> u32 {
         self.width * self.height
+    }
+
+    fn can_hold(&self, rectangle: &Rectangle) -> bool {
+        self.width > rectangle.width && self.height > rectangle.height
     }
 }
