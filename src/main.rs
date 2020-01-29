@@ -30,6 +30,20 @@ fn main() {
         value_in_cents(q1),
         value_in_cents(q2)
     );
+
+    let five = Some(5);
+    let six = plus_one(five);
+    let none = plus_one(None);
+
+    match six {
+        None => println!("None"),
+        Some(six) => println!("{}", six),
+    }
+
+    match none {
+        None => println!("True none has none"),
+        Some(_) => println!("Wow impossible there is something in here!"),
+    }
 }
 
 //define an IP enum
@@ -73,5 +87,12 @@ fn value_in_cents(coin: Coin) -> u8 {
             println!("State the quarter is from {:?}!", state);
             25
         }
+    }
+}
+
+fn plus_one(x: Option<i32>) -> Option<i32> {
+    match x {
+        None => None,
+        Some(i) => Some(i + 1),
     }
 }
